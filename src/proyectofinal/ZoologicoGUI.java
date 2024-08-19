@@ -35,7 +35,7 @@ public class ZoologicoGUI extends JFrame {
         JButton btnMostrarMapa = new JButton("Mostrar Mapa");
         btnMostrarMapa.setBounds(10, 10, 150, 30);
         btnMostrarMapa.addActionListener(new ActionListener() {
-            @Override
+            
             public void actionPerformed(ActionEvent e) {
                 labelMapa.setVisible(true); // Mostrar el mapa
             }
@@ -47,7 +47,7 @@ public class ZoologicoGUI extends JFrame {
         btnLeon.setBounds(299, 5, 100, 30);
         btnLeon.setVisible(false); // Inicialmente invisible
         btnLeon.addActionListener(new ActionListener() {
-            @Override
+            
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "El león es un mamífero carnívoro de la familia de los félidos.");
             }
@@ -91,7 +91,7 @@ public class ZoologicoGUI extends JFrame {
         btnTigre.setBounds(300, 100, 80, 30);
         btnTigre.setVisible(false); // Inicialmente invisible
         btnTigre.addActionListener(new ActionListener() {
-            @Override
+            
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "El tigre es el felino más grande del mundo.");
             }
@@ -100,7 +100,7 @@ public class ZoologicoGUI extends JFrame {
 
         // Modificar la acción del botón "Mostrar Mapa" para mostrar los botones de animales también
         btnMostrarMapa.addActionListener(new ActionListener() {
-            @Override
+            
             public void actionPerformed(ActionEvent e) {
                 labelMapa.setVisible(true); // Mostrar el mapa
                 btnLeon.setVisible(true);   // Mostrar botones
