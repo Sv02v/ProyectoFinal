@@ -196,20 +196,111 @@ public class ProyectoFinal {
     }
 
     private static void registrarAlimentacion() {
-        int registroAlimentacion = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la cantidad de registros que desea crear:"));
-        Alimentacion[] arrAlimentacion = new Alimentacion[registroAlimentacion];
-        for (int i = 0; i < registroAlimentacion; i++) {
-            int horario = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la hora de alimentación de los animales para el registro " + (i + 1) + ":"));
-            String alimentos = JOptionPane.showInputDialog(null, "Ingrese los alimentos que consumen los animales para el registro " + (i + 1) + ":");
-            String frecuenciaAlimentacion = JOptionPane.showInputDialog(null, "Ingrese la frecuencia de alimentación en horas de los animales para el registro " + (i + 1) + ":");
-            double cantidadAlimento = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese la cantidad de alimento en kg para el registro " + (i + 1) + ":"));
-            arrAlimentacion[i] = new Alimentacion(horario, alimentos, frecuenciaAlimentacion, cantidadAlimento);
+        int RegistroAlimentacion = 0;
+        boolean entradaValida = false;
+
+        // Validación de la cantidad de registros
+        do {
+            try {
+                String input = JOptionPane.showInputDialog(null, "Ingrese la cantidad de registros que desea crear (1-10): ");
+                if (input != null && !input.trim().isEmpty()) {
+                    RegistroAlimentacion = Integer.parseInt(input);
+                    if (RegistroAlimentacion > 0 && RegistroAlimentacion <= 10) {
+                        entradaValida = true;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Por favor, ingrese un número entre 1 y 10.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "El valor ingresado no puede estar vacío.");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido.");
+            }
+        } while (!entradaValida);
+
+        Alimentacion[] arrAlimentacion = new Alimentacion[RegistroAlimentacion];
+
+        // Se creo un bucle que depende de la cantidad de registros
+        for (int i = 0; i < RegistroAlimentacion; i++) {
+            entradaValida = false;  // Se reinicia para cada nuevo registro
+
+            // Solicitamos nombre del animal
+            String nombreanimal = JOptionPane.showInputDialog(null, "Ingrese el nombre del animal para el registro " + (i + 1) + ": ");
+
+            // Selección de horario
+            String[] opcioneshorario = {"7:00 am", "12:00 pm", "7:00 pm"};
+            int opcionH = JOptionPane.showOptionDialog(
+                    null,
+                    "Seleccione una hora:",
+                    "Horarios",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    null,
+                    opcioneshorario,
+                    opcioneshorario[0]
+            );
+            String horario = opcioneshorario[opcionH];
+
+            // Selección de tipo de alimento
+            String[] opcionesAlimentos = {"Frutas", "Vegetales", "Carne", "Pescado"};
+            int opcionA = JOptionPane.showOptionDialog(
+                    null,
+                    "Seleccione un tipo de Alimento:",
+                    "Alimentos",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    null,
+                    opcionesAlimentos,
+                    opcionesAlimentos[0]
+            );
+            String alimentos = opcionesAlimentos[opcionA];
+
+            // Selección de frecuencia de alimentación
+            String[] opcionesFrecuencia = {"5 horas", "8 horas", "1 día"};
+            int opcionF = JOptionPane.showOptionDialog(
+                    null,
+                    "Seleccione la frecuencia de alimentación:",
+                    "Frecuencias",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    null,
+                    opcionesFrecuencia,
+                    opcionesFrecuencia[0]
+            );
+            String frecuenciaalimentacion = opcionesFrecuencia[opcionF];
+
+            // Validación para determinar la cantidad de alimento
+            double cantidadAlimento = 0;
+            do {
+                try {
+                    String input = JOptionPane.showInputDialog(null, "Ingrese la cantidad de alimento en kg para el registro " + (i + 1) + ": ");
+                    if (input != null && !input.trim().isEmpty()) {  // Verificamos que la entrada no esté vacía
+                        cantidadAlimento = Double.parseDouble(input);
+                        if (cantidadAlimento > 0) {  // Aseguramos que la cantidad sea un número positivo
+                            entradaValida = true;  // Establecemos que la entrada es válida
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Por favor, ingrese un valor positivo.");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El valor ingresado no puede estar vacío.");
+                    }
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido.");
+                }
+            } while (!entradaValida);
+
+            // Creamos y almacenamos el objeto Alimentacion
+            arrAlimentacion[i] = new Alimentacion(nombreanimal, horario, alimentos, frecuenciaalimentacion, cantidadAlimento);
         }
-        for (int i = 0; i < registroAlimentacion; i++) {
-            JOptionPane.showMessageDialog(null, "La hora de alimentación es a las: " + arrAlimentacion[i].getHorario()
-                    + " Este animal consume: " + arrAlimentacion[i].getAlimentos()
-                    + " Este animal come cada: " + arrAlimentacion[i].getFrecuenciaalimentacion()
-                    + " horas. Este animal come (kilos): " + arrAlimentacion[i].getCantidadalimento());
+
+        // Mostramos los datos recopilados
+        for (int i = 0; i < RegistroAlimentacion; i++) {
+            JOptionPane.showMessageDialog(null,
+                    "Animal: " + arrAlimentacion[i].getNombreanimal() +
+                    "\nHora de alimentación: " + arrAlimentacion[i].getHorario() +
+                    "\nEste animal consume: " + arrAlimentacion[i].getAlimentos() +
+                    "\nEste animal come cada: " + arrAlimentacion[i].getFrecuenciaalimentacion() +
+                    "\nEste animal come (kilos): " + arrAlimentacion[i].getCantidadalimento());
         }
     }
 }
