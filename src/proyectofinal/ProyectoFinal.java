@@ -16,6 +16,54 @@ public class ProyectoFinal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+                boolean continuar = true;
+
+        while (continuar) {
+            // Menu principal
+            String[] opcionesMenuPrincipal = {
+                "Gestionar Visitantes",
+                "Gestionar Habitats",
+                "Gestionar Eventos",
+                "Registrar Alimentacion",
+                "Salir"
+            };
+
+            int opcionPrincipal = JOptionPane.showOptionDialog(
+                    null,
+                    "Seleccione una opcion:",
+                    "Menu Principal",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    null,
+                    opcionesMenuPrincipal,
+                    opcionesMenuPrincipal[0]
+            );
+
+            switch (opcionPrincipal) {
+                case 0:
+                    gestionarVisitantes();
+                    break;
+                case 1:
+                    gestionarHabitats();
+                    break;
+                case 2:
+                    gestionarEventos();
+                    break;
+                case 3:
+                    registrarAlimentacion();
+                    break;
+                case 4:
+                    JOptionPane.showMessageDialog(null, "Saliendo del programa. ¡Hasta luego!");
+                    continuar = false;
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opcion invalida. Por favor, intente de nuevo.");
+                    break;
+            }
+        }
+    }
+ 
+    private static void gestionarVisitantes() {
 // Instancia de la clase RegistroVisitantes
         // Instancia de la clase RegistroVisitantes
         RegistroVisitantes registro = new RegistroVisitantes();
@@ -26,7 +74,7 @@ public class ProyectoFinal {
         int opcion = -1; // Inicializamos con un valor que no sea válido
 
         // Bucle while
-        while (opcion != 3) { 
+        while (opcion != 3) {
             // Mostrar el menu y obtener la opcion seleccionada
             opcion = JOptionPane.showOptionDialog(
                     null,
@@ -59,7 +107,8 @@ public class ProyectoFinal {
                     break;
             }
         }
-
+    }
+private static void gestionarHabitats() {
         // Creamos una instancia de la clase GestionHabitats para manejar los habitats
         GestionHabitats gestionHabitats = new GestionHabitats();
         boolean continuar = true; // Variable para controlar el bucle del menú
