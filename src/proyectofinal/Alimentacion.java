@@ -2,29 +2,41 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyectofinal;
+package registro;
 
 /**
  *
- * @author sebastian
+ * @author sebas
  */
-public class Alimentacion { private int horario;
+import javax.swing.JOptionPane;
+public class Alimentacion {
+    private String nombreanimal;
+    private String horario;
     private String alimentos;
     private String frecuenciaalimentacion;
     private double cantidadalimento; 
     
-    public Alimentacion (int horario, String alimentos, String frecuenciaalimentacion, double cantidadalimento){
+    public Alimentacion (String nombreanimal,String horario, String alimentos, String frecuenciaalimentacion, double cantidadalimento){
+        this.nombreanimal = nombreanimal;
         this.horario = horario;
         this.alimentos = alimentos;
         this.frecuenciaalimentacion = frecuenciaalimentacion;
         this.cantidadalimento = cantidadalimento;
     }
 
-    public int getHorario() {
+    public String getNombreanimal() {
+        return nombreanimal;
+    }
+
+    public void setNombreanimal(String nombreanimal) {
+        this.nombreanimal = nombreanimal;
+    }
+
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(int horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 
