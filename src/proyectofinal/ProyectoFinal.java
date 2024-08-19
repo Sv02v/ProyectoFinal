@@ -20,14 +20,14 @@ public class ProyectoFinal {
         // Instancia de la clase RegistroVisitantes
         RegistroVisitantes registro = new RegistroVisitantes();
 
-        // Cadenas que contienen las opciones del menú
+        // Cadenas que contienen las opciones del menu
         String[] opciones = {"Agregar visitante", "Mostrar visitantes", "Mostrar estadísticas", "Salir"};
 
         int opcion = -1; // Inicializamos con un valor que no sea válido
 
         // Bucle while
-        while (opcion != 3) { // El índice 3 corresponde a "Salir"
-            // Mostrar el menú y obtener la opción seleccionada
+        while (opcion != 3) { 
+            // Mostrar el menu y obtener la opcion seleccionada
             opcion = JOptionPane.showOptionDialog(
                     null,
                     "Seleccione una opción:",
