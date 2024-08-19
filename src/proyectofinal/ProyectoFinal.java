@@ -16,21 +16,21 @@ public class ProyectoFinal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-                boolean continuar = true;
+             boolean continuar = true;
         while (continuar) {
             // Menú principal
             String[] opcionesMenuPrincipal = {
                 "Gestionar Visitantes",
-                "Gestionar Hábitats",
+                "Gestionar Habitats",
                 "Gestionar Eventos",
-                "Registrar Alimentación",
+                "Registrar Alimentacion",
                 "Mostrar Mapa",
                 "Salir"
             };
             int opcionPrincipal = JOptionPane.showOptionDialog(
                     null,
-                    "***MENÚ PRINCIPAL***",
-                    "Sistema de Gestión del Zoológico",
+                    "***MENu PRINCIPAL***",
+                    "Sistema de Gestion del Zoologico",
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.INFORMATION_MESSAGE,
                     null,
@@ -64,11 +64,12 @@ public class ProyectoFinal {
                     break;
                 }
                 default: {
-                    JOptionPane.showMessageDialog(null, "¡Opción incorrecta!");
+                    JOptionPane.showMessageDialog(null, "¡Opcion incorrecta!");
                 }
             }
         }
     }
+
     private static void gestionarVisitantes() {
 // Instancia de la clase RegistroVisitantes
         // Instancia de la clase RegistroVisitantes
@@ -77,15 +78,15 @@ public class ProyectoFinal {
         // Cadenas que contienen las opciones del menu
         String[] opciones = {"Agregar visitante", "Mostrar visitantes", "Mostrar estadísticas", "Salir"};
 
-        int opcion = -1; // Inicializamos con un valor que no sea válido
+        int opcion = -1; // Inicializamos con un valor que no sea valido
 
         // Bucle while
         while (opcion != 3) {
             // Mostrar el menu y obtener la opcion seleccionada
             opcion = JOptionPane.showOptionDialog(
                     null,
-                    "Seleccione una opción:",
-                    "Menú de Registro de Visitantes",
+                    "Seleccione una opcion:",
+                    "Menu de Registro de Visitantes",
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.INFORMATION_MESSAGE,
                     null,
@@ -109,12 +110,115 @@ public class ProyectoFinal {
                     JOptionPane.showMessageDialog(null, "Saliendo del programa. ¡Hasta luego!");
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null, "Opción inválida. Por favor, intente de nuevo.");
+                    JOptionPane.showMessageDialog(null, "Opcion invalida. Por favor, intente de nuevo.");
                     break;
             }
         }
     }
-private static void gestionarHabitats() {
+
+    private static void gestionarHabitats() {
+        // Creamos una instancia de la clase GestionHabitats para manejar los habitats
+     boolean continuar = true;
+        while (continuar) {
+            // Menú principal
+            String[] opcionesMenuPrincipal = {
+                "Gestionar Visitantes",
+                "Gestionar Habitats",
+                "Gestionar Eventos",
+                "Registrar Alimentacion",
+                "Mostrar Mapa",
+                "Salir"
+            };
+            int opcionPrincipal = JOptionPane.showOptionDialog(
+                    null,
+                    "***MENu PRINCIPAL***",
+                    "Sistema de Gestion del Zoologico",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    null,
+                    opcionesMenuPrincipal,
+                    opcionesMenuPrincipal[0]
+            );
+            switch (opcionPrincipal) {
+                case 0: {
+                    gestionarVisitantes();
+                    break;
+                }
+                case 1: {
+                    gestionarHabitats();
+                    break;
+                }
+                case 2: {
+                    gestionarEventos();
+                    break;
+                }
+                case 3: {
+                    registrarAlimentacion();
+                    break;
+                }
+                case 4: {
+                    new ZoologicoGUI();
+                    break;
+                }
+                case 5: {
+                    JOptionPane.showMessageDialog(null, "Saliendo del programa. ¡Hasta luego!");
+                    continuar = false;
+                    break;
+                }
+                default: {
+                    JOptionPane.showMessageDialog(null, "¡Opcion incorrecta!");
+                }
+            }
+        }
+    }
+
+    private static void gestionarVisitantes() {
+// Instancia de la clase RegistroVisitantes
+        // Instancia de la clase RegistroVisitantes
+        RegistroVisitantes registro = new RegistroVisitantes();
+
+        // Cadenas que contienen las opciones del menu
+        String[] opciones = {"Agregar visitante", "Mostrar visitantes", "Mostrar estadísticas", "Salir"};
+
+        int opcion = -1; // Inicializamos con un valor que no sea valido
+
+        // Bucle while
+        while (opcion != 3) {
+            // Mostrar el menu y obtener la opcion seleccionada
+            opcion = JOptionPane.showOptionDialog(
+                    null,
+                    "Seleccione una opcion:",
+                    "Menu de Registro de Visitantes",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    null,
+                    opciones,
+                    opciones[0]
+            );
+
+            // Ejecutar acción basada en la opción seleccionada
+            switch (opcion) {
+                case 0:
+                    registro.agregarVisitante();
+                    JOptionPane.showMessageDialog(null, "Visitante agregado exitosamente.");
+                    break;
+                case 1:
+                    registro.mostrarVisitantes();
+                    break;
+                case 2:
+                    registro.mostrarEstadísticas();
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null, "Saliendo del programa. ¡Hasta luego!");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opcion invalida. Por favor, intente de nuevo.");
+                    break;
+            }
+        }
+    }
+
+    private static void gestionarHabitats() {
         // Creamos una instancia de la clase GestionHabitats para manejar los habitats
         GestionHabitats gestionHabitats = new GestionHabitats();
         boolean continuar = true; // Variable para controlar el bucle del menú
@@ -123,7 +227,7 @@ private static void gestionarHabitats() {
         while (continuar) {
             // Mostramos un menú al usuario y le pedimos que seleccione una opción
             String opcionMenu = JOptionPane.showInputDialog(
-                    "Seleccione una opción:\n"
+                    "Seleccione una opcion:\n"
                     + "1. Agregar Habitat\n"
                     + "2. Consultar Habitats\n"
                     + "3. Modificar Habitat\n"
@@ -154,8 +258,8 @@ private static void gestionarHabitats() {
                     continuar = false;
                     break;
                 default:
-                    // Si la opción ingresada no es válida, mostramos un mensaje de error
-                    JOptionPane.showMessageDialog(null, "Opción no válida. Intente de nuevo.");
+                    // Si la opción ingresada no es valida, mostramos un mensaje de error
+                    JOptionPane.showMessageDialog(null, "Opción no valida. Intente de nuevo.");
                     break;
             }
         }
@@ -198,7 +302,7 @@ private static void gestionarHabitats() {
                         String localizacion = JOptionPane.showInputDialog("Ingrese la localización del evento:");
                         eventos[numEventos++] = new Evento(nombre, fecha, id, descripcion, localizacion);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Se ha alcanzado el límite máximo de eventos.");
+                        JOptionPane.showMessageDialog(null, "Se ha alcanzado el límite maximo de eventos.");
                     }
                     break;
                 case 2:
@@ -244,7 +348,7 @@ private static void gestionarHabitats() {
                     }
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null, "Opción inválida. Por favor, intente de nuevo.");
+                    JOptionPane.showMessageDialog(null, "Opción invalida. Por favor, intente de nuevo.");
                     break;
             }
         }
@@ -269,7 +373,7 @@ private static void gestionarHabitats() {
                     JOptionPane.showMessageDialog(null, "El valor ingresado no puede estar vacío.");
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido.");
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese un número valido.");
             }
         } while (!entradaValida);
 
@@ -295,8 +399,7 @@ private static void gestionarHabitats() {
                     opcioneshorario[0]
             );
             String horario = opcioneshorario[opcionH];
-
-            // Selección de tipo de alimento
+// Selección de tipo de alimento
             String[] opcionesAlimentos = {"Frutas", "Vegetales", "Carne", "Pescado"};
             int opcionA = JOptionPane.showOptionDialog(
                     null,
@@ -332,7 +435,7 @@ private static void gestionarHabitats() {
                     if (input != null && !input.trim().isEmpty()) {  // Verificamos que la entrada no esté vacía
                         cantidadAlimento = Double.parseDouble(input);
                         if (cantidadAlimento > 0) {  // Aseguramos que la cantidad sea un número positivo
-                            entradaValida = true;  // Establecemos que la entrada es válida
+                            entradaValida = true;  // Establecemos que la entrada es valida
                         } else {
                             JOptionPane.showMessageDialog(null, "Por favor, ingrese un valor positivo.");
                         }
@@ -340,7 +443,7 @@ private static void gestionarHabitats() {
                         JOptionPane.showMessageDialog(null, "El valor ingresado no puede estar vacío.");
                     }
                 } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido.");
+                    JOptionPane.showMessageDialog(null, "Por favor, ingrese un número valido.");
                 }
             } while (!entradaValida);
 
@@ -351,12 +454,13 @@ private static void gestionarHabitats() {
         // Mostramos los datos recopilados
         for (int i = 0; i < RegistroAlimentacion; i++) {
             JOptionPane.showMessageDialog(null,
-                    "Animal: " + arrAlimentacion[i].getNombreanimal() +
-                    "\nHora de alimentación: " + arrAlimentacion[i].getHorario() +
-                    "\nEste animal consume: " + arrAlimentacion[i].getAlimentos() +
-                    "\nEste animal come cada: " + arrAlimentacion[i].getFrecuenciaalimentacion() +
-                    "\nEste animal come (kilos): " + arrAlimentacion[i].getCantidadalimento());
+                    "Animal: " + arrAlimentacion[i].getNombreanimal()
+                    + "\nHora de alimentación: " + arrAlimentacion[i].getHorario()
+                    + "\nEste animal consume: " + arrAlimentacion[i].getAlimentos()
+                    + "\nEste animal come cada: " + arrAlimentacion[i].getFrecuenciaalimentacion()
+                    + "\nEste animal come (kilos): " + arrAlimentacion[i].getCantidadalimento());
         }
+
     }
 }
 
