@@ -10,13 +10,13 @@ package proyectofinal;
  */
 import javax.swing.JOptionPane;
 public class Alimentacion {
-    private String nombreanimal;
+   private String nombreanimal;
     private String horario;
     private String alimentos;
     private String frecuenciaalimentacion;
     private double cantidadalimento; 
     
-    public Alimentacion (String nombreanimal,String horario, String alimentos, String frecuenciaalimentacion, double cantidadalimento){
+    public Alimentacion (String nombreanimal, String horario, String alimentos, String frecuenciaalimentacion, double cantidadalimento){
         this.nombreanimal = nombreanimal;
         this.horario = horario;
         this.alimentos = alimentos;
@@ -63,6 +63,5 @@ public class Alimentacion {
     public void setCantidadalimento(double cantidadalimento) {
         this.cantidadalimento = cantidadalimento;
     }
-
     
 }
