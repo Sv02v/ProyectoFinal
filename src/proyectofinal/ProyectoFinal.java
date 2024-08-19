@@ -17,52 +17,58 @@ public class ProyectoFinal {
      */
     public static void main(String[] args) {
                 boolean continuar = true;
-
         while (continuar) {
-            // Menu principal
+            // Menú principal
             String[] opcionesMenuPrincipal = {
                 "Gestionar Visitantes",
-                "Gestionar Habitats",
+                "Gestionar Hábitats",
                 "Gestionar Eventos",
-                "Registrar Alimentacion",
+                "Registrar Alimentación",
+                "Mostrar Mapa",
                 "Salir"
             };
-
             int opcionPrincipal = JOptionPane.showOptionDialog(
                     null,
-                    "Seleccione una opcion:",
-                    "Menu Principal",
+                    "***MENÚ PRINCIPAL***",
+                    "Sistema de Gestión del Zoológico",
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.INFORMATION_MESSAGE,
                     null,
                     opcionesMenuPrincipal,
                     opcionesMenuPrincipal[0]
             );
-
             switch (opcionPrincipal) {
-                case 0:
+                case 0: {
                     gestionarVisitantes();
                     break;
-                case 1:
+                }
+                case 1: {
                     gestionarHabitats();
                     break;
-                case 2:
+                }
+                case 2: {
                     gestionarEventos();
                     break;
-                case 3:
+                }
+                case 3: {
                     registrarAlimentacion();
                     break;
-                case 4:
+                }
+                case 4: {
+                    new ZoologicoGUI();
+                    break;
+                }
+                case 5: {
                     JOptionPane.showMessageDialog(null, "Saliendo del programa. ¡Hasta luego!");
                     continuar = false;
                     break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Opcion invalida. Por favor, intente de nuevo.");
-                    break;
+                }
+                default: {
+                    JOptionPane.showMessageDialog(null, "¡Opción incorrecta!");
+                }
             }
         }
     }
- 
     private static void gestionarVisitantes() {
 // Instancia de la clase RegistroVisitantes
         // Instancia de la clase RegistroVisitantes
